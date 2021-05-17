@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration>
+
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{HH:mm:ss}[%c - %p] - %m%n" />
+		</layout>
+
+		<!--限制输出级别 从小到大  DEBUG，INFO，WARN，ERROR，FATAL-->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="DEBUG" />
+			<param name="LevelMax" value="FATAL" />
+		</filter>
+	</appender>
+
+	<!-- 输出日志到文件  每天一个文件 -->  
+    <appender name="dailyRollingFile" class="org.apache.log4j.DailyRollingFileAppender">  
+        <param name="Threshold" value="info"></param>  
+        <param name="ImmediateFlush" value="true"></param>  
+        <param name="File" value="/usr/local/apps/frontier.log"></param>  
+        <!-- <param name="DatePattern" value="'%d{yyyy-MM-dd}'.log"></param>   -->
+        <layout class="org.apache.log4j.PatternLayout">  
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss\} %-5p] [%t] {%c:%L}-%m%n"></param>  
+        </layout>  
+    </appender> 
+	
+	<!-- 
+	
+	<category name="com.alibaba">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="dailyRollingFile" />
+	</category> 
+	
+	<category name="org.springframework">
+		<appender-ref ref="CONSOLE" />		
+		<appender-ref ref="dailyRollingFile" />
+	</category>
+
+	<category name="edu.uci.ics.crawler4j">
+		<appender-ref ref="CONSOLE" />		
+		<appender-ref ref="dailyRollingFile" />
+	</category>
+	
+	-->
+	
+	<category name="com.sleuth">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="dailyRollingFile" />
+	</category>
+	
+</log4j:configuration> 

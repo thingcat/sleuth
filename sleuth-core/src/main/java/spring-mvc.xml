@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:context="http://www.springframework.org/schema/context" 
+		xmlns:aop="http://www.springframework.org/schema/aop" 
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:mvc="http://www.springframework.org/schema/mvc"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans 
+							http://www.springframework.org/schema/beans/spring-beans.xsd 
+							http://www.springframework.org/schema/context 
+							http://www.springframework.org/schema/context/spring-context.xsd 
+							http://www.springframework.org/schema/aop 
+							http://www.springframework.org/schema/aop/spring-aop.xsd 
+							http://www.springframework.org/schema/tx 
+							http://www.springframework.org/schema/tx/spring-tx.xsd
+							http://www.springframework.org/schema/mvc 
+							http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	
+	<!-- 开启注解 -->
+	<context:annotation-config/>
+	
+	<context:property-placeholder location="classpath:config.properties"/>
+	
+    <!-- 设置需要进行Spring注解扫描的类包-->
+	<context:component-scan base-package="com.sleuth.api.controller" />
+	
+	<!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+    
+    <!-- REST中根据URL后缀自动判定Content-Type及相应的View -->
+    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="mediaTypes" >
+            <value>
+                json=application/json
+                xml=application/xml
+            </value>
+        </property>
+    </bean>
+    
+    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager">
+        <mvc:message-converters register-defaults="true">
+        	<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        		<property name="objectMapper">
+        			<bean class="com.fasterxml.jackson.databind.ObjectMapper">
+        				<property name="serializationInclusion">
+        					<value type="com.fasterxml.jackson.annotation.JsonInclude.Include">NON_NULL</value>
+        				</property>
+        			</bean>
+        		</property>
+        	</bean>
+            <!-- 将StringHttpMessageCOnverter的默认编码设为UTF-8 -->
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8" />
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+    
+    <!-- 容器默认的DefaultServletHandler处理 所有静态内容与无RequestMapping处理的URL-->
+    <mvc:default-servlet-handler/>
+    
+    <!-- 全局异常配置 start -->  
+    <bean id="exceptionResolver" class="com.sleuth.core.web.JsonHandlerExceptionResolver"/> 
+	
+	<mvc:interceptors> 
+    	<!-- form表单提交拦截 -->
+	    <bean class="com.sleuth.core.web.validator.ValidatorHandlerInterceptor"/>
+	    <mvc:interceptor>
+	    	<mvc:mapping path="/api/**"/>
+	    	<bean class="com.sleuth.api.interceptor.ApiInterceptor"></bean>
+	    </mvc:interceptor>
+	</mvc:interceptors>
+	
+</beans>

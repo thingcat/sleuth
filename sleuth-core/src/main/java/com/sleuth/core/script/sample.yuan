@@ -1,0 +1,33 @@
+
+/** 定义一个事件元  */
+yuan Test {
+	
+	var httpRequest = api.require("httpRequest");
+	
+	//定义输入
+	function input(obj) {
+		return {
+			args: {
+				
+			},
+			inputs: [
+				
+			]
+		}
+	}
+	
+	//定义输出
+	function output(ret) {
+		return {
+			
+		}
+	}
+	
+	//触发
+	function trigger(args) {
+		
+	}
+	
+}
+
+function Atest() {var i = 100;this.get = function() {i++;return i;}}function Btest() {var atest = new Atest();print(atest.get());}

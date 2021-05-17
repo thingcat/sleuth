@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:context="http://www.springframework.org/schema/context" 
+		xmlns:aop="http://www.springframework.org/schema/aop" 
+		xmlns:tx="http://www.springframework.org/schema/tx" 
+		xmlns:task="http://www.springframework.org/schema/task"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans 
+							http://www.springframework.org/schema/beans/spring-beans-4.3.xsd 
+							http://www.springframework.org/schema/context 
+							http://www.springframework.org/schema/context/spring-context-4.3.xsd 
+							http://www.springframework.org/schema/aop 
+							http://www.springframework.org/schema/aop/spring-aop-4.3.xsd 
+							http://www.springframework.org/schema/tx 
+							http://www.springframework.org/schema/tx/spring-tx-4.3.xsd 
+							http://www.springframework.org/schema/task    
+							http://www.springframework.org/schema/task/spring-task-4.3.xsd">
+	
+	<!-- 开启注解 -->
+	<context:annotation-config/>
+	<!-- 任务扫描注解 -->
+	<task:annotation-driven/>
+	
+	<!-- 使用AspectJ方式配置AOP -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	<aop:config proxy-target-class="true" />
+	
+	<!-- 设置需要进行Spring注解扫描的类包 -->
+	<context:component-scan base-package="com.sleuth" />
+	
+	<context:property-placeholder location="classpath:config.properties"/>
+	
+	<!-- 数据存储配置 -->
+	<bean id="dataSource" class="com.sleuth.core.storage.datastore.DatastoreSource">
+		<property name="root" value="${store.root}"/>
+		<property name="createIfMissing" value="${store.createIfMissing}"/>
+		<property name="writeBufferSize" value="${store.writeBufferSize}"/>
+		<property name="maxWriteBufferNumber" value="${store.maxWriteBufferNumber}"/>
+		<property name="maxBackgroundCompactions" value="${store.maxBackgroundCompactions}"/>
+	</bean>
+	<!-- 数据存储操作 -->
+	<bean id="rocksTemplate" class="com.sleuth.core.storage.datastore.ThingRocksTemplate">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<!-- 初始化P2P网络模型 -->
+	<bean id="peerNetwork" class="com.sleuth.network.peer.hash.DHTPeerNetwork">
+		<property name="uri" value="${socket.ws.uri}"/>
+		<property name="lable" value="${seed.lable}"/>
+	</bean>
+	
+	<!-- 事务拦截 -->
+	<bean id="transactionInterceptor" class="com.sleuth.core.storage.TransactionInterceptor"/>
+	
+	<!-- 消息广播 -->
+	<bean id="broadcastInterceptor" class="com.sleuth.network.message.push.BroadcastMethodInterceptor"/>
+	<aop:config>
+		<aop:pointcut id="targetPointcut" expression="execution(* com.sleuth..*.*(..))"/>
+		<aop:advisor advice-ref="transactionInterceptor" pointcut-ref="targetPointcut"/>
+		<aop:advisor advice-ref="broadcastInterceptor" pointcut-ref="targetPointcut"/>
+	</aop:config>
+	
+	<bean id="springContextHolder" class="com.sleuth.context.holder.SpringContextHolder" lazy-init="false"/>
+	
+	<bean id="sleuthContext" class="com.sleuth.context.holder.SleuthContextListener" 
+		init-method="onBeforeHandle" destroy-method="onAfterHandle"/>
+	
+</beans>
