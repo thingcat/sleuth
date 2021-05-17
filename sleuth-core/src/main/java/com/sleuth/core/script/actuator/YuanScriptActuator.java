@@ -17,7 +17,7 @@ import com.sleuth.core.script.ScriptActuator;
 import com.sleuth.core.script.Yuan;
 import com.sleuth.core.script.exception.ScriptRunException;
 
-/** 事件元脚本执行器
+/** 交易元脚本执行器
  * 
  * @author Jonse
  * @date 2020年12月11日

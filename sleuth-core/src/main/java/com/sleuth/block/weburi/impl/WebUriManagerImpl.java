@@ -53,9 +53,9 @@ public class WebUriManagerImpl implements WebUriManager {
 
 	@Override
 	public void pushResult(WebUriDTO dto) {
-		//将事件加入到缓存中，等待被打包
+		//将交易加入到缓存中，等待被打包
 		this.webUriBuffer.push(dto);
-		//将事件广播出去
+		//将交易广播出去
 		this.webUriService.doRecvFrom(dto);
 	}
 	

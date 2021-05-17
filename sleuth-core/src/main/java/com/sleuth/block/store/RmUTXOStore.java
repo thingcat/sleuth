@@ -9,19 +9,19 @@ import com.sleuth.block.schema.RmUTXO;
  */
 public interface RmUTXOStore {
 	
-	/** 保存UTXO中被删除的事件索引
+	/** 保存UTXO中被删除的交易索引
 	 * 
 	 * @param rmUTXO
 	 */
 	public abstract void add(RmUTXO rmUTXO);
 	
-	/** 移除从UTXO中被删除的事件索引，说明已经被还原过了
+	/** 移除从UTXO中被删除的交易索引，说明已经被还原过了
 	 * 
 	 * @param blockHash
 	 */
 	public abstract void remove(String blockHash);
 	
-	/** 获取从UTXO中被删除的事件索引
+	/** 获取从UTXO中被删除的交易索引
 	 * 
 	 * @param blockHash
 	 * @return

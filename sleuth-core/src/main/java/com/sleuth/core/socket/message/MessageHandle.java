@@ -16,7 +16,7 @@ public interface MessageHandle<T extends Protocol> {
 	 * @param <T>
 	 * 
 	 * @param channel 连接通道
-	 * @param event 事件
+	 * @param event 交易
 	 * @param ch 消息频道
 	 * @param data 消息数据
 	 */

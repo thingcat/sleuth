@@ -29,7 +29,7 @@ public class MerkleVerifyImpl implements MerkleVerify {
 			logger.warn("time verify failed. hash = {}", merkle.getHash());
 			return false;
 		}
-		//验证下面的事件
+		//验证下面的交易
 		if (!verifyRootHash(merkle)) {
 			logger.warn("TxMerkle verify failed. hash = {}", merkle.getHash());
 			return false;
@@ -44,7 +44,7 @@ public class MerkleVerifyImpl implements MerkleVerify {
 			logger.warn("time verify failed. hash = {}", merkle.getHash());
 			return false;
 		}
-		//验证下面的事件
+		//验证下面的交易
 		if (!verifyRootHash(merkle)) {
 			logger.warn("WxMerkle verify failed. hash = {}", merkle.getHash());
 			return false;

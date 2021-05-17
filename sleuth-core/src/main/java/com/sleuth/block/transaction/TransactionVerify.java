@@ -2,7 +2,7 @@ package com.sleuth.block.transaction;
 
 import com.sleuth.block.dto.TransactionDTO;
 
-/** 事件验证池，推送过来的事件等待验证
+/** 交易验证池，推送过来的交易等待验证
  * 
  * <p>1、验证签名</p>
  * <p>1、验证时间戳</p>
@@ -12,7 +12,7 @@ import com.sleuth.block.dto.TransactionDTO;
  */
 public interface TransactionVerify {
 	
-	/** 验证事件
+	/** 验证交易
 	 * 
 	 * @param dto
 	 * @return

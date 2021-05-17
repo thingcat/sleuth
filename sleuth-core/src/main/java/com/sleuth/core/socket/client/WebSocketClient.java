@@ -150,7 +150,7 @@ public class WebSocketClient implements WebSocket {
 	public class ChannelConnetListener implements ChannelFutureListener {
 		@Override
 		public void operationComplete(ChannelFuture future) throws Exception {
-			//如果重连失败，则调用ChannelInactive方法，再次出发重连事件  
+			//如果重连失败，则调用ChannelInactive方法，再次出发重连交易  
 	        if (!future.isSuccess()) {
 	        	CLI.set(null);
 	        	ChannelPipeline pipeline = future.channel().pipeline();

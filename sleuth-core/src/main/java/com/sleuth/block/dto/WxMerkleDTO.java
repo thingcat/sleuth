@@ -1,5 +1,6 @@
 package com.sleuth.block.dto;
 
+import com.sleuth.block.schema.WxMerkle;
 import com.sleuth.core.socket.message.DTO;
 
 /** 交易默克尔树
@@ -17,10 +18,16 @@ public class WxMerkleDTO extends DTO {
 	private String hash;//默克尔树hash值
 	private String[] wxIds;//WebURI
 	private Long createAt;
-	private boolean hasNext;//是否有下一组，解决事件HASH值过多的影响
+	private boolean hasNext;//是否有下一组，解决交易HASH值过多的影响
 	
 	public WxMerkleDTO() {
 		
+	}
+
+	public WxMerkleDTO(WxMerkle merkle) {
+		this.hash = merkle.getHash();
+		this.wxIds = merkle.getWxIds();
+		this.createAt = merkle.getCreateAt();
 	}
 
 	public String getHash() {

@@ -68,7 +68,7 @@ public abstract class SocketWatchdog extends ReconnetWatchdog {
         super.channelActive(ctx);
     }
 	
-    /** 连接每次关闭的时候，触发该事件
+    /** 连接每次关闭的时候，触发该交易
      * 
      */
     @Override  

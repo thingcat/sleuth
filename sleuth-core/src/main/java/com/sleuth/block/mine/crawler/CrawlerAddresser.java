@@ -77,7 +77,6 @@ public class CrawlerAddresser extends WebCrawler {
 	        	this.webUriBuffer.push(poolWebUri);
 	        	logger.debug("Find the address {}, join the buffer pool and wait to be packaged", domain);
 			}
-	        
 		} catch (MalformedURLException e) {
 			logger.error("Error parsing URI: {}", webURL.getPath());
 		}

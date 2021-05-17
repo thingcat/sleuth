@@ -33,7 +33,7 @@ public class RefactorerTest {
 		//构建脚本重构器
 		ScriptRefactorer scriptRefactorer = new ScriptRefactorer(syntaxParser);
 		if (syntaxParser.getIncludes() != null && syntaxParser.getIncludes().length > 0) {
-			//导入其他的事件元
+			//导入其他的交易元
 			//scriptRefactorer.include(yuan);
 			
 		}
@@ -49,7 +49,7 @@ public class RefactorerTest {
 		//构建脚本重构器
 		ScriptRefactorer scriptRefactorer = new ScriptRefactorer(syntaxParser);
 		if (syntaxParser.getIncludes() != null && syntaxParser.getIncludes().length > 0) {
-			//导入其他的事件元
+			//导入其他的交易元
 			scriptRefactorer.include(yuan);
 		}
 		return scriptRefactorer.refactorer();

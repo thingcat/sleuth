@@ -14,7 +14,7 @@ public class OutputResult implements Serializable {
 	 */
 	private static final long serialVersionUID = -838775121563490348L;
 	
-	private String axId;//事件ID
+	private String axId;//交易ID
 	private Object data;//输出结果，可能是一个复杂对象
 	private String sign;//输出签名
 	

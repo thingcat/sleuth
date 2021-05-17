@@ -7,20 +7,20 @@ public interface TransactionManager {
 	
 	public abstract Transaction findById(String txId);
 	
-	/** 加入到缓存中，一般通过API接口产生的事件
+	/** 加入到缓存中，一般通过API接口产生的交易
 	 * 
 	 * @param result
 	 */
 	public abstract void addBuffer(TransactionDTO dto);
 	
-	/** 接收事件，其他节点同步过来的事件
+	/** 接收交易，其他节点同步过来的交易
 	 * 
 	 * @param dto
 	 * @return
 	 */
 	public abstract void pushResult(TransactionDTO dto);
 	
-	/** 主动申请同步过来的事件，区块里面的事件
+	/** 主动申请同步过来的交易，区块里面的交易
 	 * 
 	 * @param merkle
 	 */
@@ -32,7 +32,7 @@ public interface TransactionManager {
 	 */
 	public abstract Transaction[] baleBufferTransactions();
 	
-	/** 区块生成后，将缓存中的事件转移到区块中（正式库）
+	/** 区块生成后，将缓存中的交易转移到区块中（正式库）
 	 * 
 	 * buffer -> block
 	 * 
@@ -40,7 +40,7 @@ public interface TransactionManager {
 	 */
 	public abstract void baleTransfer(Transaction[] transactions);
 	
-	/** 移除缓存中的事件
+	/** 移除缓存中的交易
 	 * 
 	 * @param action
 	 */

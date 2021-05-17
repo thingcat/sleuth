@@ -16,8 +16,8 @@ public enum CmdType {
 	WEBURI_SYNC("weburi/sync"),//同步
 	WEBURI_PUSH("weburi/push"),//广播
 	
-	TRANSACTION_SYNC("transaction/sync"),//事件申请 server->client
-	TRANSACTION_PUSH("transaction/push"),//事件同步 - 广播
+	TRANSACTION_SYNC("transaction/sync"),//交易申请 server->client
+	TRANSACTION_PUSH("transaction/push"),//交易同步 - 广播
 	
 	TX_MERKLE_SYNC("tx_merkle/sync"),
 	TX_MERKLE_PUSH("tx_merkle/push"),

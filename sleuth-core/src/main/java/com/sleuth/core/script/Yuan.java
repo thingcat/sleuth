@@ -1,6 +1,6 @@
 package com.sleuth.core.script;
 
-/** 事件元
+/** 交易元
  * 
  * @author Jonse
  * @date 2020年12月11日

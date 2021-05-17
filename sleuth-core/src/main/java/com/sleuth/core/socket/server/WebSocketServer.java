@@ -56,7 +56,7 @@ public class WebSocketServer implements WebSocket {
 	public WebSocketServer(URI uri, WebSocketServerAdapter webSocketAdapter) {
 		//连接处理group				
 		this.bossGroup = new NioEventLoopGroup();				
-		//事件处理group				
+		//交易处理group				
 		this.workerGroup = new NioEventLoopGroup();				
 		this.bootstrap = new ServerBootstrap();
 		

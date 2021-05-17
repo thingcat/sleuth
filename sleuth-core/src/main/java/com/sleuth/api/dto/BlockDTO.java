@@ -29,7 +29,7 @@ public class BlockDTO implements Serializable {
 	private BigInteger target;//目标难度值
 	private Long nonce;//工作量证明计数器
 	private Long height;//区块高度
-	private int acts;//事件元数量
+	private int acts;//交易元数量
 	private String bc;//播报方-Broadcast
 	
 	public BlockDTO() {

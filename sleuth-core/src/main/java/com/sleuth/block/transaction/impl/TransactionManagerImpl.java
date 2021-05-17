@@ -33,17 +33,17 @@ public class TransactionManagerImpl implements TransactionManager {
 	@Override
 	@Transactional
 	public void addBuffer(TransactionDTO dto) {
-		//将事件加入到缓存中
+		//将交易加入到缓存中
 		this.transactionBuffer.push(dto);
-		//将事件广播出去
+		//将交易广播出去
 		this.transactionService.doProduce(TxUtils.toSchema(dto));
 	}
 	
 	@Override
 	public void pushResult(TransactionDTO dto) {
-		//将事件加入到缓存中
+		//将交易加入到缓存中
 		this.transactionBuffer.push(dto);
-		//将事件广播出去
+		//将交易广播出去
 		this.transactionService.doRecvFrom(dto);
 	}
 	

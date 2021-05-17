@@ -57,12 +57,12 @@ public abstract class UTXOPool {
 		this.joinAll();
 	}
 	
-	/** 合并一组事件的交易
+	/** 合并一组交易的交易
 	 * 
 	 * @param actions
 	 */
 	protected void join(List<Transaction> transactions) {
-		//寻找事件里面的交易
+		//寻找交易里面的交易
 		if (transactions != null && transactions.size() > 0) {
 			for (Transaction transaction : transactions) {
 				if (transaction != null) {
@@ -72,12 +72,12 @@ public abstract class UTXOPool {
 		}
 	}
 	
-	/** 回滚事件里面的交易输出
+	/** 回滚交易里面的交易输出
 	 * 
 	 * @param actions
 	 */
 	protected void rollback(List<Transaction> transactions) {
-		//寻找事件里面的交易
+		//寻找交易里面的交易
 		if (transactions != null && transactions.size() > 0) {
 			for (Transaction transaction : transactions) {
 				if (transaction != null) {

@@ -16,11 +16,16 @@ public class WebUriVerifyImpl implements WebUriVerify {
 	
 	@Override
 	public boolean verify(WebUriDTO dto) {
+		WebUri webUri = new WebUri(dto);
+		if (!verifyTime(webUri)) {
+			logger.warn("time verify failed. wxId = {}", webUri.getWxId());
+			return false;
+		}
 		
 		return false;
 	}
 	
-	/** 事件时间戳检测
+	/** 交易时间戳检测
 	 * 
 	 *  生成时间必须小于或者等于未来2个小时时间
 	 *  

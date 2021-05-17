@@ -5,7 +5,7 @@ import java.util.List;
 import com.sleuth.block.dto.TransactionDTO;
 import com.sleuth.block.schema.Transaction;
 
-/** 事件接收缓冲池，等待被校验
+/** 交易接收缓冲池，等待被校验
  * 
  * @author Jonse
  * @date 2021年1月30日
@@ -40,7 +40,7 @@ public interface TransactionBuffer {
 	 */
 	public abstract int size();
 	
-	/** 获取缓冲池的事件
+	/** 获取缓冲池的交易
 	 * 
 	 * @param page
 	 * @return

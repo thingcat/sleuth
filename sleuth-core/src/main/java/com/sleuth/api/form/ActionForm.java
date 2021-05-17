@@ -9,13 +9,13 @@ public class ActionForm implements Serializable {
 	 */
 	private static final long serialVersionUID = 4657275063953878613L;
 
-	private String axId;//事件Id
+	private String axId;//交易Id
 	private String tappHash;//Tapp哈希值
-	private String version;//事件版本
+	private String version;//交易版本
 	
 	private String entries;//外部输入参数，json格式
-	private String inputs;//引用其他事件的输出结果，json格式
-	private String output;//事件输出成果，将成果输出到指定的公钥上，json格式
+	private String inputs;//引用其他交易的输出结果，json格式
+	private String output;//交易输出成果，将成果输出到指定的公钥上，json格式
 	private Long createAt;//创建日期
 	
 	public String getAxId() {

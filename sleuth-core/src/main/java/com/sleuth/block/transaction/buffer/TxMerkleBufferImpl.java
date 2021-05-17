@@ -16,7 +16,7 @@ public class TxMerkleBufferImpl implements TxMerkleBuffer {
 	
 	final Logger logger = LoggerFactory.getLogger(getClass());
 	
-	/** 事件hash值组一次最大广播长度  */
+	/** 交易hash值组一次最大广播长度  */
 	static final int MAX_BROADCAST_SIZE = 128;
 	
 	static final Map<String, TxMerkleDTO> maps = Maps.newConcurrentMap();

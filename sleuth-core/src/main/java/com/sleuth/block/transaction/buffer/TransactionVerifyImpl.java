@@ -41,7 +41,7 @@ public class TransactionVerifyImpl implements TransactionVerify {
 		return true;
 	}
 	
-	/** 事件时间戳检测
+	/** 交易时间戳检测
 	 * 
 	 *  交易的生成时间必须小于或者等于未来2个小时时间
 	 *  

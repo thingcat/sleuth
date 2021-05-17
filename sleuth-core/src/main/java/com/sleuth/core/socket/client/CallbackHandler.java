@@ -1,6 +1,6 @@
 package com.sleuth.core.socket.client;
 
-/** 回调事件
+/** 回调交易
  * 
  * @author Administrator
  *

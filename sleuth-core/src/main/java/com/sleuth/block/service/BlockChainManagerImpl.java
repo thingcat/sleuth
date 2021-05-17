@@ -57,7 +57,7 @@ public class BlockChainManagerImpl implements BlockChainManager {
 		//3、保存默克尔树
 		this.wxMerkleManager.addResult(WxMerkle.newMerkle(result));
 		this.txMerkleManager.addResult(TxMerkle.newMerkle(result));
-		//4、将缓存中的事件转移到正式库
+		//4、将缓存中的交易转移到正式库
 		this.transactionManager.baleTransfer(result.getTransactions());
 		//将区块广播出去
 		this.blockService.doProduce(newBlock);

@@ -12,7 +12,7 @@ import com.alibaba.fastjson.JSON;
 public class AxParams {
 	
 	private Entry[] entries = {};//外部参数
-	private String[] axIds = {};//引用的其他事件输出
+	private String[] axIds = {};//引用的其他交易输出
 	private int j = -1;//迭代索引
 	
 	public void set(String name, Object value) {
@@ -46,7 +46,7 @@ public class AxParams {
 		}
 	}
 	
-	/** 引用其他事件
+	/** 引用其他交易
 	 * 
 	 * @param axId
 	 */
