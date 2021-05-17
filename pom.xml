@@ -214,5 +214,8 @@
 	
 	<modules>
 		<module>sleuth-core</module>
+		<module>sleuth-client</module>
+		<module>sleuth-web</module>
 	</modules>
+	
 </project>
