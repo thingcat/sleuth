@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sleuth.block.mine.SleuthAddresser;
+import com.sleuth.block.schema.WebUri;
 import com.sleuth.block.weburi.WebUriBuffer;
 import com.sleuth.block.weburi.WebUriPool;
 import com.sleuth.core.utils.PublicKeyUtils;
@@ -56,6 +57,12 @@ public class CrawlerSleuthAddresser implements SleuthAddresser {
 	}
 	
 	@Override
+	public void start() {
+		WebUri webUri = this.webUriPool.random();
+		this.start(webUri.getUri());
+	}
+	
+	@Override
 	public void start(final String... seeds) {
 		for (String seed : seeds) {
 			this.crawlController.addSeed(seed);
@@ -69,6 +76,7 @@ public class CrawlerSleuthAddresser implements SleuthAddresser {
 	@Override
 	public void shutdown() {
 		this.crawlController.shutdown();
+		this.start();
 	}
 	
 	/** 寻址器工作线程

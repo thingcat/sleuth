@@ -7,6 +7,11 @@ package com.sleuth.block.mine;
  * @date 2021年5月12日
  */
 public interface SleuthAddresser {
+
+	/** 从WebURI池里面选择种子启动寻址器
+	 * 
+	 */
+	public abstract void start();
 	
 	/** 启动寻址器
 	 * 

@@ -29,15 +29,15 @@ public class IOResult {
 		return this.outputs;
 	}
 	
-	public void addTxInput(String axId, TxInput[] txInputs) {
-		if (!this.inputs.containsKey(axId)) {
-			this.inputs.put(axId, txInputs);
+	public void addTxInput(String txId, TxInput[] txInputs) {
+		if (!this.inputs.containsKey(txId)) {
+			this.inputs.put(txId, txInputs);
 		}
 	}
 	
-	public void addTxOutput(String axId, TxOutput[] txOutputs) {
-		if (!this.outputs.containsKey(axId)) {
-			this.outputs.put(axId, txOutputs);
+	public void addTxOutput(String txId, TxOutput[] txOutputs) {
+		if (!this.outputs.containsKey(txId)) {
+			this.outputs.put(txId, txOutputs);
 		}
 	}
 

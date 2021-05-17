@@ -15,6 +15,12 @@ public interface WebUriPool {
 	 */
 	public abstract void onPreloading();
 	
+	/** 随机获得一个URI
+	 * 
+	 * @return
+	 */
+	public abstract WebUri random();
+	
 	/** 从池里面获得记录
 	 * 
 	 * @param wxId

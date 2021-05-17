@@ -1,6 +1,8 @@
 package com.sleuth.block.weburi.impl;
 
+import java.util.Collection;
 import java.util.Map;
+import java.util.Random;
 
 import javax.annotation.Resource;
 
@@ -23,6 +25,7 @@ import com.sleuth.block.weburi.WxMerkleManager;
 public class WebUriPoolImpl implements WebUriPool {
 
 	final Logger logger = LoggerFactory.getLogger(getClass());
+	final Random random = new Random();
 	
 	static final Map<String, WebUri> WEB_URIS = Maps.newConcurrentMap();
 	
@@ -43,6 +46,22 @@ public class WebUriPoolImpl implements WebUriPool {
 		while(iterator.hasNext()) {
 			this.join(iterator.next());
 		}
+	}
+	
+	@Override
+	public WebUri random() {
+		int size = WEB_URIS.size();
+		int i = this.random.nextInt(size);
+		int temp = 0;
+		for(Map.Entry<String, WebUri> entry : WEB_URIS.entrySet()) {
+			if (i == temp) {
+				return entry.getValue();
+			}
+		}
+		Collection<WebUri> collection = WEB_URIS.values();
+		WebUri[] webUris = collection.toArray(new WebUri[size]);
+		//默认抽取最后一个
+		return webUris[size-1];
 	}
 
 	@Override
