@@ -57,5 +57,5 @@ Digital currency will be used to support the development of the search business 
 | Stage two  | 18144000 | 52561 ~ 78481 | 700/Block |
 | Stage three  | 73584000 | 78482 ~ 109842 | 200/Block |
 
-# contact me
+# Contact me
 Email: luotixin@126.com
